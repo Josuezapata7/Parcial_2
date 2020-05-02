@@ -5,6 +5,12 @@
  */
 package Prototipo_2P;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Langas
@@ -28,7 +34,7 @@ public class Mantenimiento_Vendedores_9959_18_4829 extends javax.swing.JInternal
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        txt_Codgo_Vendedor = new javax.swing.JTextField();
+        txt_Codigo_Vendedor = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         txt_Nombre_Vendedor = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
@@ -64,12 +70,32 @@ public class Mantenimiento_Vendedores_9959_18_4829 extends javax.swing.JInternal
         jLabel6.setText("Estatus Vendedor");
 
         jButton_Buscar.setText("Buscar");
+        jButton_Buscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_BuscarActionPerformed(evt);
+            }
+        });
 
         jButton_Ingresar.setText("Ingresar");
+        jButton_Ingresar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_IngresarActionPerformed(evt);
+            }
+        });
 
         jButton_Modificar.setText("Modificar");
+        jButton_Modificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_ModificarActionPerformed(evt);
+            }
+        });
 
         jButton_Eliminar.setText("Eliminar");
+        jButton_Eliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_EliminarActionPerformed(evt);
+            }
+        });
 
         jLabel7.setText("Ingrese Codigo de Vendedor");
 
@@ -80,21 +106,27 @@ public class Mantenimiento_Vendedores_9959_18_4829 extends javax.swing.JInternal
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(txt_Codgo_Vendedor))
-                    .addComponent(jLabel2)
-                    .addComponent(txt_Nombre_Vendedor, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3)
-                    .addComponent(txt_Direccion_Vendedor, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4)
-                    .addComponent(jLabel5)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(txt_Nit_Vendedor, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 92, Short.MAX_VALUE)
-                        .addComponent(txt_Telefono_Vendedor, javax.swing.GroupLayout.Alignment.LEADING))
-                    .addComponent(jLabel6)
-                    .addComponent(txt_Estatus_Vendedor, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(485, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(txt_Codigo_Vendedor))
+                            .addComponent(txt_Nombre_Vendedor, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel3)
+                            .addComponent(txt_Direccion_Vendedor, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel5)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(txt_Nit_Vendedor, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 92, Short.MAX_VALUE)
+                                .addComponent(txt_Telefono_Vendedor, javax.swing.GroupLayout.Alignment.LEADING))
+                            .addComponent(jLabel6)
+                            .addComponent(txt_Estatus_Vendedor, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap(485, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton_Eliminar)
+                        .addGap(140, 140, 140))))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(139, 139, 139)
@@ -110,10 +142,8 @@ public class Mantenimiento_Vendedores_9959_18_4829 extends javax.swing.JInternal
                             .addComponent(txt_Buscar, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addComponent(label_status, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jButton_Buscar)
-                        .addComponent(jButton_Eliminar))
-                    .addContainerGap(99, Short.MAX_VALUE)))
+                    .addComponent(jButton_Buscar)
+                    .addContainerGap(104, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -121,9 +151,11 @@ public class Mantenimiento_Vendedores_9959_18_4829 extends javax.swing.JInternal
                 .addContainerGap()
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txt_Codgo_Vendedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel2)
+                .addComponent(txt_Codigo_Vendedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(14, 14, 14)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(jButton_Eliminar))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txt_Nombre_Vendedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -142,14 +174,13 @@ public class Mantenimiento_Vendedores_9959_18_4829 extends javax.swing.JInternal
                 .addComponent(jLabel6)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(txt_Estatus_Vendedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(42, Short.MAX_VALUE))
+                .addContainerGap(30, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(64, 64, 64)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jButton_Ingresar)
-                        .addComponent(jButton_Modificar)
-                        .addComponent(jButton_Eliminar))
+                        .addComponent(jButton_Modificar))
                     .addGap(107, 107, 107)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel7)
@@ -162,6 +193,119 @@ public class Mantenimiento_Vendedores_9959_18_4829 extends javax.swing.JInternal
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton_IngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_IngresarActionPerformed
+        // TODO add your handling code here:
+        
+        try        
+        {
+            Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/sic","root","Langas798");
+            PreparedStatement pst = cn.prepareStatement("insert into vendedores values(?,?,?,?,?,?)");
+            
+            pst.setString(1, txt_Codigo_Vendedor.getText().trim());
+            pst.setString(2, txt_Nombre_Vendedor.getText().trim());
+            pst.setString(3, txt_Direccion_Vendedor.getText().trim());
+            pst.setString(4, txt_Telefono_Vendedor.getText().trim());
+            pst.setString(5, txt_Nit_Vendedor.getText().trim());
+            pst.setString(6, txt_Estatus_Vendedor.getText().trim());
+            pst.executeUpdate();
+            
+            txt_Codigo_Vendedor.setText("");
+            txt_Nombre_Vendedor.setText("");
+            txt_Direccion_Vendedor.setText("");
+            txt_Telefono_Vendedor.setText("");
+            txt_Nit_Vendedor.setText("");
+            txt_Estatus_Vendedor.setText("");
+            
+            label_status.setText("Registrado.");
+            
+        }catch (Exception e)
+        {
+            System.out.println(e);
+        }
+    }//GEN-LAST:event_jButton_IngresarActionPerformed
+
+    private void jButton_ModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_ModificarActionPerformed
+        // TODO add your handling code here:
+        
+        try
+        {
+            String ID = txt_Buscar.getText().trim();
+            
+            Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/sic", "root", "Langas798");
+            PreparedStatement pst = cn.prepareStatement("update Vendedores set Codigo_Vendedor = ?,Nombre_Vendedor = ?, Direccion_Vendedor = ?,Telefono_Vendedor=?,Nit_Vendedor=?,Estatus_Vendedor=? where Codigo_Vendedor = " + ID);
+            
+            pst.setString(1, txt_Codigo_Vendedor.getText().trim());
+            pst.setString(2, txt_Nombre_Vendedor.getText().trim());
+            pst.setString(3, txt_Direccion_Vendedor.getText().trim());
+            pst.setString(4, txt_Telefono_Vendedor.getText().trim());
+            pst.setString(5, txt_Nit_Vendedor.getText().trim());
+            pst.setString(6, txt_Estatus_Vendedor.getText().trim());
+            pst.executeUpdate();
+            
+            label_status.setText("Modificación exitosa.");
+            
+        } catch (Exception e) 
+        {
+            System.out.println(e);
+        }
+    }//GEN-LAST:event_jButton_ModificarActionPerformed
+
+    private void jButton_EliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_EliminarActionPerformed
+        // TODO add your handling code here:
+        
+        try 
+        {
+            Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/sic", "root", "Langas798");
+            PreparedStatement pst = cn.prepareStatement("delete from Vendedores where Codigo_Vendedor = ?");
+            
+            pst.setString(1, txt_Buscar.getText().trim());
+            pst.executeUpdate();
+            
+            txt_Codigo_Vendedor.setText("");
+            txt_Nombre_Vendedor.setText("");
+            txt_Direccion_Vendedor.setText("");
+            txt_Telefono_Vendedor.setText("");
+            txt_Nit_Vendedor.setText("");
+            txt_Estatus_Vendedor.setText("");
+            
+            label_status.setText("Registro eliminado.");
+            
+        } catch (Exception e) 
+        {
+            System.out.println(e);
+        }
+    }//GEN-LAST:event_jButton_EliminarActionPerformed
+
+    private void jButton_BuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_BuscarActionPerformed
+        // TODO add your handling code here:
+        
+            try
+            {
+            Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/sic", "root", "Langas798");
+            PreparedStatement pst = cn.prepareStatement("select * from Vendedores where Codigo_Vendedor = ?");
+            pst.setString(1, txt_Buscar.getText().trim());
+            
+            ResultSet rs = pst.executeQuery();
+            
+            if(rs.next())
+            {
+                txt_Codigo_Vendedor.setText(rs.getString("Codigo_Vendedor"));
+                txt_Nombre_Vendedor.setText(rs.getString("Nombre_Vendedor"));
+                txt_Direccion_Vendedor.setText(rs.getString("Direccion_Vendedor"));
+                txt_Telefono_Vendedor.setText(rs.getString("Telefono_Vendedor"));
+                txt_Nit_Vendedor.setText(rs.getString("Nit_Vendedor"));
+                txt_Estatus_Vendedor.setText(rs.getString("Estatus_Vendedor"));
+            } else 
+            {
+                JOptionPane.showMessageDialog(null, "Producto no registrado.");
+            }
+            
+        }catch (Exception e)
+        {
+                System.out.println(e);
+        }
+    }//GEN-LAST:event_jButton_BuscarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -178,7 +322,7 @@ public class Mantenimiento_Vendedores_9959_18_4829 extends javax.swing.JInternal
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel label_status;
     private javax.swing.JTextField txt_Buscar;
-    private javax.swing.JTextField txt_Codgo_Vendedor;
+    private javax.swing.JTextField txt_Codigo_Vendedor;
     private javax.swing.JTextField txt_Direccion_Vendedor;
     private javax.swing.JTextField txt_Estatus_Vendedor;
     private javax.swing.JTextField txt_Nit_Vendedor;

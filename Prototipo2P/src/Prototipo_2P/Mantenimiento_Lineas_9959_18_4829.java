@@ -5,6 +5,12 @@
  */
 package Prototipo_2P;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Langas
@@ -52,12 +58,32 @@ public class Mantenimiento_Lineas_9959_18_4829 extends javax.swing.JInternalFram
         jLabel3.setText("Estatus Linea");
 
         jButton_Buscar.setText("Buscar");
+        jButton_Buscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_BuscarActionPerformed(evt);
+            }
+        });
 
         jButton_Ingresar.setText("Ingresar");
+        jButton_Ingresar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_IngresarActionPerformed(evt);
+            }
+        });
 
         jButton_Modificar.setText("Modificar");
+        jButton_Modificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_ModificarActionPerformed(evt);
+            }
+        });
 
         jButton_Eliminar.setText("Eliminar");
+        jButton_Eliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_EliminarActionPerformed(evt);
+            }
+        });
 
         jLabel4.setText("Ingrese ID de Linea");
 
@@ -68,33 +94,42 @@ public class Mantenimiento_Lineas_9959_18_4829 extends javax.swing.JInternalFram
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(txt_Codigo_Linea))
-                    .addComponent(jLabel2)
-                    .addComponent(txt_Nombre_Linea, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3)
-                    .addComponent(txt_Estatus_Linea, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(477, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(txt_Codigo_Linea))
+                            .addComponent(jLabel3)
+                            .addComponent(txt_Estatus_Linea, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txt_Nombre_Linea, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel2)
+                                .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(202, 202, 202)
+                        .addComponent(jButton_Modificar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jButton_Eliminar)
+                        .addGap(104, 104, 104))))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
-                    .addGap(115, 115, 115)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                            .addGap(83, 83, 83)
-                            .addComponent(jButton_Ingresar)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(jButton_Eliminar))
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(jLabel4)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(txt_Buscar, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addComponent(label_status, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jButton_Modificar)
-                        .addComponent(jButton_Buscar))
-                    .addContainerGap(115, Short.MAX_VALUE)))
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(198, 198, 198)
+                            .addComponent(jButton_Ingresar))
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(115, 115, 115)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(jLabel4)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(txt_Buscar, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(label_status, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGap(18, 18, 18)
+                    .addComponent(jButton_Buscar)
+                    .addContainerGap(127, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -104,9 +139,14 @@ public class Mantenimiento_Lineas_9959_18_4829 extends javax.swing.JInternalFram
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txt_Codigo_Linea, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txt_Nombre_Linea, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txt_Nombre_Linea, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jButton_Modificar)
+                        .addComponent(jButton_Eliminar)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -115,10 +155,7 @@ public class Mantenimiento_Lineas_9959_18_4829 extends javax.swing.JInternalFram
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(73, 73, 73)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jButton_Ingresar)
-                        .addComponent(jButton_Eliminar)
-                        .addComponent(jButton_Modificar))
+                    .addComponent(jButton_Ingresar)
                     .addGap(107, 107, 107)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel4)
@@ -131,6 +168,104 @@ public class Mantenimiento_Lineas_9959_18_4829 extends javax.swing.JInternalFram
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton_IngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_IngresarActionPerformed
+        // TODO add your handling code here:
+        
+        try        
+        {
+            Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/sic","root","Langas798");
+            PreparedStatement pst = cn.prepareStatement("insert into Lineas values(?,?,?)");
+            
+            pst.setString(1, txt_Codigo_Linea.getText().trim());
+            pst.setString(2, txt_Nombre_Linea.getText().trim());
+            pst.setString(3, txt_Estatus_Linea.getText().trim());
+            pst.executeUpdate();
+            
+            txt_Codigo_Linea.setText("");
+            txt_Nombre_Linea.setText("");
+            txt_Estatus_Linea.setText("");
+            
+            label_status.setText("Registrado.");
+            
+        }catch (Exception e)
+        {
+            System.out.println(e);
+        }
+    }//GEN-LAST:event_jButton_IngresarActionPerformed
+
+    private void jButton_ModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_ModificarActionPerformed
+        // TODO add your handling code here:
+        
+        try
+        {
+            String ID = txt_Buscar.getText().trim();
+            
+            Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/sic", "root", "Langas798");
+            PreparedStatement pst = cn.prepareStatement("update Lineas set Codigo_Linea = ?,Nombre_Linea = ?, Estatus_Linea = ? where Codigo_Linea = " + ID);
+            
+            pst.setString(1, txt_Codigo_Linea.getText().trim());
+            pst.setString(2, txt_Nombre_Linea.getText().trim());
+            pst.setString(3, txt_Estatus_Linea.getText().trim());
+            pst.executeUpdate();
+            
+            label_status.setText("Modificación exitosa.");
+            
+        } catch (Exception e) 
+        {
+            System.out.println(e);
+        }
+    }//GEN-LAST:event_jButton_ModificarActionPerformed
+
+    private void jButton_EliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_EliminarActionPerformed
+        // TODO add your handling code here:
+        
+        try 
+        {
+            Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/sic", "root", "Langas798");
+            PreparedStatement pst = cn.prepareStatement("delete from Lineas where Codigo_Linea = ?");
+            
+            pst.setString(1, txt_Buscar.getText().trim());
+            pst.executeUpdate();
+            
+            txt_Codigo_Linea.setText("");
+            txt_Nombre_Linea.setText("");
+            txt_Estatus_Linea.setText("");
+            
+            label_status.setText("Registro eliminado.");
+            
+        } catch (Exception e) 
+        {
+            System.out.println(e);
+        }
+    }//GEN-LAST:event_jButton_EliminarActionPerformed
+
+    private void jButton_BuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_BuscarActionPerformed
+        // TODO add your handling code here:
+        
+        try
+         {
+         Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/sic", "root", "Langas798");
+         PreparedStatement pst = cn.prepareStatement("select * from Lineas where Codigo_Linea = ?");
+            pst.setString(1, txt_Buscar.getText().trim());
+            
+            ResultSet rs = pst.executeQuery();
+            
+            if(rs.next())
+            {
+                txt_Codigo_Linea.setText(rs.getString("Codigo_Linea"));
+                txt_Nombre_Linea.setText(rs.getString("Nombre_Linea"));
+                txt_Estatus_Linea.setText(rs.getString("Estatus_Linea"));
+            } else 
+            {
+                JOptionPane.showMessageDialog(null, "No registrado.");
+            }
+            
+        }catch (Exception e)
+        {
+            System.out.println(e);   
+        }
+    }//GEN-LAST:event_jButton_BuscarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

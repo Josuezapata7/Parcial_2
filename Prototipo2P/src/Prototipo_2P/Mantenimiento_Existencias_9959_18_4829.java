@@ -5,6 +5,12 @@
  */
 package Prototipo_2P;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Langas
@@ -52,12 +58,32 @@ public class Mantenimiento_Existencias_9959_18_4829 extends javax.swing.JInterna
         jLabel3.setText("Saldo Existencia");
 
         jButton_Buscar.setText("Buscar");
+        jButton_Buscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_BuscarActionPerformed(evt);
+            }
+        });
 
         jButton_Ingresar.setText("Ingresar");
+        jButton_Ingresar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_IngresarActionPerformed(evt);
+            }
+        });
 
         jButton_Modificar.setText("Modificar");
+        jButton_Modificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_ModificarActionPerformed(evt);
+            }
+        });
 
         jButton_Eliminar.setText("Eliminar");
+        jButton_Eliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_EliminarActionPerformed(evt);
+            }
+        });
 
         jLabel4.setText("Ingrese ID de Bodega");
 
@@ -130,6 +156,100 @@ public class Mantenimiento_Existencias_9959_18_4829 extends javax.swing.JInterna
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton_IngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_IngresarActionPerformed
+        // TODO add your handling code here:
+               try        
+        {
+            Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/sic","root","Langas798");
+            PreparedStatement pst = cn.prepareStatement("insert into Existencias values(?,?,?)");
+            
+            pst.setString(1, txt_Codigo_Bodega.getText().trim());
+            pst.setString(2, txt_Codigo_Producto.getText().trim());
+            pst.setString(3, txt_Saldo_Existencia.getText().trim());
+            pst.executeUpdate();
+            
+            txt_Codigo_Bodega.setText("");
+            txt_Codigo_Producto.setText("");
+            txt_Saldo_Existencia.setText("");
+            
+            label_status.setText("Registrado.");
+            
+        }catch (Exception e)
+        {
+            System.out.println(e);
+        }
+
+    }//GEN-LAST:event_jButton_IngresarActionPerformed
+
+    private void jButton_ModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_ModificarActionPerformed
+        // TODO add your handling code here:
+        
+        try
+        {
+            String ID = txt_Buscar.getText().trim();
+            
+            Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/sic", "root", "Langas798");
+            PreparedStatement pst = cn.prepareStatement("update Existencias set Codigo_Bodega = ?,Codigo_Producto = ?, Saldo_Existencia = ? where Codigo_Bodega = " + ID);
+            
+            pst.setString(1, txt_Codigo_Bodega.getText().trim());
+            pst.setString(2, txt_Codigo_Producto.getText().trim());
+            pst.setString(3, txt_Saldo_Existencia.getText().trim());
+            pst.executeUpdate();
+            
+            label_status.setText("Modificación exitosa.");
+            
+        } catch (Exception e) 
+        {
+            System.out.println(e);
+        }
+    }//GEN-LAST:event_jButton_ModificarActionPerformed
+
+    private void jButton_EliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_EliminarActionPerformed
+        // TODO add your handling code here:
+        try 
+        {
+            Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/sic", "root", "Langas798");
+            PreparedStatement pst = cn.prepareStatement("delete from Existencias where Codigo_Bodega = ?");
+            
+            pst.setString(1, txt_Buscar.getText().trim());
+            pst.executeUpdate();
+            
+            txt_Codigo_Bodega.setText("");
+            txt_Codigo_Producto.setText("");
+            txt_Saldo_Existencia.setText("");
+            
+            label_status.setText("Registro eliminado.");
+            
+        } catch (Exception e) {
+        }
+    }//GEN-LAST:event_jButton_EliminarActionPerformed
+
+    private void jButton_BuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_BuscarActionPerformed
+        // TODO add your handling code here:
+        try
+        {
+            Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/sic", "root", "Langas798");
+            PreparedStatement pst = cn.prepareStatement("select * from Existencias where Codigo_Bodega = ?");
+            pst.setString(1, txt_Buscar.getText().trim());
+
+            ResultSet rs = pst.executeQuery();
+
+            if(rs.next())
+            {
+                txt_Codigo_Bodega.setText(rs.getString("Codigo_Bodega"));
+                txt_Codigo_Producto.setText(rs.getString("Codigo_Producto"));
+                txt_Saldo_Existencia.setText(rs.getString("Saldo_Existencia"));
+            } else
+            {
+                JOptionPane.showMessageDialog(null, "Cliente no registrado.");
+            }
+
+        }catch (Exception e)
+        {
+            System.out.println(e);
+        }
+    }//GEN-LAST:event_jButton_BuscarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -29,32 +29,38 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
                       <Component id="jLabel1" max="32767" attributes="0"/>
-                      <Component id="txt_Codigo_Producto" max="32767" attributes="0"/>
+                      <Component id="txt_Codigo_Cliente" max="32767" attributes="0"/>
                   </Group>
+                  <Component id="jLabel2" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="txt_Codigo_Vendedor" alignment="0" min="-2" pref="73" max="-2" attributes="0"/>
                   <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jLabel2" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="txt_Nombre_Producto" alignment="0" min="-2" pref="90" max="-2" attributes="0"/>
+                          <Component id="txt_Nombre_Cliente" alignment="0" min="-2" pref="78" max="-2" attributes="0"/>
                           <Component id="jLabel3" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="txt_Existencia_Producto" alignment="0" min="-2" pref="88" max="-2" attributes="0"/>
                           <Component id="jLabel4" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel5" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel6" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                              <Component id="txt_Codigo_Marca" alignment="0" pref="85" max="32767" attributes="0"/>
-                              <Component id="txt_Codigo_Linea" alignment="0" max="32767" attributes="0"/>
-                              <Component id="txt_Estatus_Producto" alignment="0" max="32767" attributes="0"/>
+                              <Component id="txt_Nit_Cliente" alignment="0" pref="78" max="32767" attributes="0"/>
+                              <Component id="txt_Direccion_Cliente" alignment="0" max="32767" attributes="0"/>
                           </Group>
+                          <Component id="txt_Telefono_Cliente" alignment="0" min="-2" pref="74" max="-2" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
+                              <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Component id="jLabel6" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabel7" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="txt_Estatus_Cliente" alignment="0" min="-2" pref="71" max="-2" attributes="0"/>
                       </Group>
+                      <EmptySpace min="-2" pref="76" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="1" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="76" pref="76" max="-2" attributes="0"/>
+                              <EmptySpace min="83" pref="83" max="-2" attributes="0"/>
                               <Component id="jButton_Ingresar" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="jButton_Modificar" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="1" attributes="0">
-                              <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Component id="txt_Buscar" min="-2" pref="111" max="-2" attributes="0"/>
                           </Group>
@@ -67,7 +73,7 @@
                       </Group>
                   </Group>
               </Group>
-              <EmptySpace pref="84" max="32767" attributes="0"/>
+              <EmptySpace pref="119" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -77,32 +83,34 @@
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="txt_Codigo_Producto" min="-2" max="-2" attributes="0"/>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Component id="txt_Codigo_Cliente" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
-                      <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="txt_Nombre_Producto" min="-2" max="-2" attributes="0"/>
+                      <Component id="txt_Nombre_Cliente" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="txt_Existencia_Producto" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="txt_Direccion_Cliente" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="txt_Estatus_Producto" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="txt_Nit_Cliente" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="txt_Codigo_Linea" min="-2" max="-2" attributes="0"/>
+                      <Component id="txt_Telefono_Cliente" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="txt_Estatus_Cliente" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="txt_Codigo_Marca" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
                   </Group>
-                  <Group type="102" attributes="0">
+                  <Group type="102" alignment="1" attributes="0">
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jButton_Ingresar" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jButton_Modificar" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -110,15 +118,17 @@
                       </Group>
                       <EmptySpace min="107" pref="107" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jLabel7" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabel8" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="txt_Buscar" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jButton_Buscar" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="128" max="32767" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
                       <Component id="label_status" min="-2" pref="35" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace max="-2" attributes="0"/>
+              <Component id="txt_Codigo_Vendedor" min="-2" max="-2" attributes="0"/>
+              <EmptySpace pref="49" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -126,53 +136,57 @@
   <SubComponents>
     <Component class="javax.swing.JLabel" name="jLabel1">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Codigo Producto"/>
+        <Property name="text" type="java.lang.String" value="Codigo Cliente"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="txt_Codigo_Producto">
+    <Component class="javax.swing.JTextField" name="txt_Codigo_Cliente">
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel2">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Nombre Producto"/>
+        <Property name="text" type="java.lang.String" value="Nombre Cliente"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="txt_Nombre_Producto">
+    <Component class="javax.swing.JTextField" name="txt_Nombre_Cliente">
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel3">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Existencia Producto"/>
+        <Property name="text" type="java.lang.String" value="Direccion Cliente"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="txt_Existencia_Producto">
+    <Component class="javax.swing.JTextField" name="txt_Direccion_Cliente">
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel4">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Estatus Producto"/>
+        <Property name="text" type="java.lang.String" value="Nit Cliente"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="txt_Estatus_Producto">
+    <Component class="javax.swing.JTextField" name="txt_Nit_Cliente">
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel5">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Codigo Linea"/>
+        <Property name="text" type="java.lang.String" value="Telefono Cliente"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="txt_Codigo_Linea">
+    <Component class="javax.swing.JTextField" name="txt_Telefono_Cliente">
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel6">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Codigo Marca"/>
+        <Property name="text" type="java.lang.String" value="Codigo Vendedor"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="txt_Codigo_Marca">
+    <Component class="javax.swing.JTextField" name="txt_Codigo_Vendedor">
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel7">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Estatus Cliente"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="txt_Estatus_Cliente">
     </Component>
     <Component class="javax.swing.JButton" name="jButton_Buscar">
       <Properties>
         <Property name="text" type="java.lang.String" value="Buscar"/>
       </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton_BuscarActionPerformed"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="label_status">
     </Component>
@@ -180,29 +194,20 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Ingresar"/>
       </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton_IngresarActionPerformed"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jButton_Modificar">
       <Properties>
         <Property name="text" type="java.lang.String" value="Modificar"/>
       </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton_ModificarActionPerformed"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jButton_Eliminar">
       <Properties>
         <Property name="text" type="java.lang.String" value="Eliminar"/>
       </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton_EliminarActionPerformed"/>
-      </Events>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel7">
+    <Component class="javax.swing.JLabel" name="jLabel8">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Ingrese ID de Producto"/>
+        <Property name="text" type="java.lang.String" value="Ingrese Codigo de Cliente"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="txt_Buscar">

@@ -5,6 +5,12 @@
  */
 package Prototipo_2P;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Langas
@@ -32,7 +38,7 @@ public class Mantenimiento_Marcas_9959_18_4829 extends javax.swing.JInternalFram
         txt_Codigo_Marcas = new javax.swing.JTextField();
         label_status = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        txt_Nombre_Bodega = new javax.swing.JTextField();
+        txt_Nombre_Marca = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         txt_Estatus_Marca = new javax.swing.JTextField();
         jButton_Ingresar = new javax.swing.JButton();
@@ -48,16 +54,36 @@ public class Mantenimiento_Marcas_9959_18_4829 extends javax.swing.JInternalFram
         jLabel1.setText("Codigo Marca");
 
         jButton_Buscar.setText("Buscar");
+        jButton_Buscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_BuscarActionPerformed(evt);
+            }
+        });
 
         jLabel2.setText("Nombre Marca");
 
         jLabel3.setText("Estatus Marca");
 
         jButton_Ingresar.setText("Ingresar");
+        jButton_Ingresar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_IngresarActionPerformed(evt);
+            }
+        });
 
         jButton_Modificar.setText("Modificar");
+        jButton_Modificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_ModificarActionPerformed(evt);
+            }
+        });
 
         jButton_Eliminar.setText("Eliminar");
+        jButton_Eliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_EliminarActionPerformed(evt);
+            }
+        });
 
         jLabel4.setText("Ingrese ID de Marca");
 
@@ -78,7 +104,7 @@ public class Mantenimiento_Marcas_9959_18_4829 extends javax.swing.JInternalFram
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel2)
-                                    .addComponent(txt_Nombre_Bodega, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(txt_Nombre_Marca, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(133, 133, 133)
                                 .addComponent(jButton_Ingresar)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -108,7 +134,7 @@ public class Mantenimiento_Marcas_9959_18_4829 extends javax.swing.JInternalFram
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txt_Nombre_Bodega, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(txt_Nombre_Marca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jButton_Ingresar)
                         .addComponent(jButton_Modificar)
@@ -130,6 +156,103 @@ public class Mantenimiento_Marcas_9959_18_4829 extends javax.swing.JInternalFram
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButton_IngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_IngresarActionPerformed
+        // TODO add your handling code here:
+        
+        try        
+        {
+            Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/sic","root","Langas798");
+            PreparedStatement pst = cn.prepareStatement("insert into Marcas values(?,?,?)");
+            
+            pst.setString(1, txt_Codigo_Marcas.getText().trim());
+            pst.setString(2, txt_Nombre_Marca.getText().trim());
+            pst.setString(3, txt_Estatus_Marca.getText().trim());
+            pst.executeUpdate();
+            
+            txt_Codigo_Marcas.setText("");
+            txt_Nombre_Marca.setText("");
+            txt_Estatus_Marca.setText("");
+            
+            label_status.setText("Registrado.");
+            
+        }catch (Exception e)
+        {
+            System.out.println(e);
+        }
+    }//GEN-LAST:event_jButton_IngresarActionPerformed
+
+    private void jButton_ModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_ModificarActionPerformed
+        // TODO add your handling code here:
+        
+        try
+        {
+            String ID = txt_Buscar.getText().trim();
+            
+            Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/sic", "root", "Langas798");
+            PreparedStatement pst = cn.prepareStatement("update Marcas set Codigo_Marca = ?,Nombre_Marca = ?, Estatus_Marca = ? where Codigo_Marca = " + ID);
+            
+            pst.setString(1, txt_Codigo_Marcas.getText().trim());
+            pst.setString(2, txt_Nombre_Marca.getText().trim());
+            pst.setString(3, txt_Estatus_Marca.getText().trim());
+            pst.executeUpdate();
+            
+            label_status.setText("Modificación exitosa.");
+            
+        } catch (Exception e) 
+        {
+            System.out.println(e);
+        }
+    }//GEN-LAST:event_jButton_ModificarActionPerformed
+
+    private void jButton_EliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_EliminarActionPerformed
+        // TODO add your handling code here:
+        
+        try 
+        {
+            Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/sic", "root", "Langas798");
+            PreparedStatement pst = cn.prepareStatement("delete from Marcas where Codigo_Marca = ?");
+            
+            pst.setString(1, txt_Buscar.getText().trim());
+            pst.executeUpdate();
+            
+            txt_Codigo_Marcas.setText("");
+            txt_Nombre_Marca.setText("");
+            txt_Estatus_Marca.setText("");
+            
+            label_status.setText("Registro eliminado.");
+            
+        } catch (Exception e) 
+        {
+            System.out.println(e);
+        }
+    }//GEN-LAST:event_jButton_EliminarActionPerformed
+
+    private void jButton_BuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_BuscarActionPerformed
+        // TODO add your handling code here:
+        
+            try
+            {
+            Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/sic", "root", "Langas798");
+            PreparedStatement pst = cn.prepareStatement("select * from Marcas where Codigo_Marca = ?");
+            pst.setString(1, txt_Buscar.getText().trim());
+            
+            ResultSet rs = pst.executeQuery();
+            
+            if(rs.next())
+            {
+                txt_Codigo_Marcas.setText(rs.getString("Codigo_Marca"));
+                txt_Nombre_Marca.setText(rs.getString("Nombre_Marca"));
+                txt_Estatus_Marca.setText(rs.getString("Estatus_Marca"));
+            } else 
+            {
+                JOptionPane.showMessageDialog(null, "Marca no registrado.");
+            }
+            
+        }catch (Exception e){
+                System.out.println(e);
+        }
+    }//GEN-LAST:event_jButton_BuscarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton_Buscar;
@@ -144,6 +267,6 @@ public class Mantenimiento_Marcas_9959_18_4829 extends javax.swing.JInternalFram
     private javax.swing.JTextField txt_Buscar;
     private javax.swing.JTextField txt_Codigo_Marcas;
     private javax.swing.JTextField txt_Estatus_Marca;
-    private javax.swing.JTextField txt_Nombre_Bodega;
+    private javax.swing.JTextField txt_Nombre_Marca;
     // End of variables declaration//GEN-END:variables
 }
